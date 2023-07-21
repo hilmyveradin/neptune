@@ -26,7 +26,7 @@ import {
   Image,
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import { BsBook } from 'react-icons/bs';
 import { MdOutlinePayment } from 'react-icons/md';
 import { RxDashboard } from 'react-icons/rx';
@@ -71,13 +71,13 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
 
 const SideBar = ({ currentSegment }: SideBarProps) => {
   const { user } = useAuth() as AuthContextType;
-  const router = useRouter();
+  // const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const isMobile = useBreakpointValue({ base: true, md: false });
 
   const handleSignOut = async () => {
     // await signOut();
-    router.push('/');
+    // router.push('/');
   };
 
   return (
