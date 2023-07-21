@@ -1,21 +1,44 @@
 'use client';
 
-import { Flex } from '@chakra-ui/react';
+import { Box, VStack, Button } from '@chakra-ui/react';
+import { useRouter } from 'next/navigation';
+
+import type { AuthContextType } from '~/customHooks/interfaces';
+import { useAuth } from '~/customHooks/useAuth';
+import Footer from '~/lib/layout/Footer';
+import Header from '~/lib/layout/Header';
 
 const Home = () => {
+  const router = useRouter();
+
+  const { user } = useAuth() as AuthContextType;
+
+  const cobaSekarangButtonClick = () => {
+    if (user) {
+      router.push('/app/dashboard');
+    } else {
+      router.push('/daftar');
+    }
+  };
+
   return (
-    <Flex
+    <VStack
       direction="column"
       alignItems="center"
       justifyContent="center"
       minHeight="70vh"
-      gap={4}
+      // gap={4}
       mb={8}
-      w="full"
+      p="4"
+      w="100%"
+      spacing="8px"
     >
-      {' '}
-      Test{' '}
-    </Flex>
+      <Header />
+      <Box minHeight="500px" width="100%" textAlign="center" bg="red.100">
+        <Button onClick={cobaSekarangButtonClick}> Coba Sekarang </Button>
+      </Box>
+      <Footer />
+    </VStack>
   );
 };
 
