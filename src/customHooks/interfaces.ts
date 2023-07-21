@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import type firebase from '../utils/firebaseClient';
+import type firebase from '../lib/utils/firebaseClient';
 
 export interface AuthProviderProps {
   children: ReactNode;

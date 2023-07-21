@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 import Providers from '~/app/providers';
-import { AuthProvider } from '~/lib/customHooks/useAuth';
+import { AuthProvider } from '~/customHooks/useAuth';
 import Layout from '~/lib/layout';
 
 type RootLayoutProps = {

@@ -5,8 +5,9 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import { useState, useEffect, useContext, createContext } from 'react';
 
-import type { AuthContextType, AuthProviderProps } from '../types/interfaces';
-import firebase from '../utils/firebaseClient';
+import firebase from '../lib/utils/firebaseClient';
+
+import type { AuthContextType, AuthProviderProps } from './interfaces';
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
