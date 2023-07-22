@@ -83,6 +83,7 @@ const DashboardBookPage = () => {
                 description={book.description}
                 image={book.image}
                 contact={book.contact}
+                userID=""
               />
             ))}
             <Box onClick={addDonationClick}>
@@ -107,6 +108,7 @@ const DashboardBookPage = () => {
                 description={book.description}
                 image={book.image}
                 contact={book.contact}
+                userID=""
               />
             ))}
             <Box onClick={addRequestClick}>
