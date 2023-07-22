@@ -69,6 +69,22 @@ const AddBookRequestForm: React.FC<AddBookRequestFormProps> = ({ onClose }) => {
     return error;
   };
 
+  const validateNomorField = (value: string) => {
+    let error;
+
+    if (!value) {
+      error = 'Tolong isi bagian ini';
+    }
+    const regex = /^(62)8[1-9][0-9]{6,9}$/;
+
+    if (!regex.test(value)) {
+      error =
+        'Format kontak tidak valid. Harap diawali dengan 62 dan diikuti dengan 8-12 digit angka lainnya.';
+    }
+
+    return error;
+  };
+
   return (
     <VStack alignItems="center" p="0 10px 10px 10px">
       <VStack alignItems="center" w="full">
@@ -92,11 +108,16 @@ const AddBookRequestForm: React.FC<AddBookRequestFormProps> = ({ onClose }) => {
               const modifiedValues: { [key: string]: string } = {
                 title,
                 description,
-                contact,
               };
+
+              const message =
+                'Halo, saya tertarik untuk mendonasikan buku yang kamu inginkan di situs BagiBaca.id. Boleh bicara lebih lanjut?';
+              const encodedMessage = encodeURIComponent(message);
+              const whatsappLink = `https://api.whatsapp.com/send/?phone=${contact}&text=${encodedMessage}`;
 
               modifiedValues.image =
                 imageTextData !== '' ? imageTextData : '-9';
+              modifiedValues.contact = whatsappLink;
 
               try {
                 firestore.collection('BookRequests').add(modifiedValues);
@@ -158,12 +179,7 @@ const AddBookRequestForm: React.FC<AddBookRequestFormProps> = ({ onClose }) => {
                         Masukkin judul donasi kamu disini. Bisa berupa judul
                         buku, tema, dan sebagainya.{' '}
                       </FormHelperText>
-                      <Input
-                        {...field}
-                        id="title"
-                        placeholder="Judul Ajuan."
-                        mb="12px"
-                      />
+                      <Input {...field} id="title" placeholder="Judul Ajuan." />
 
                       <FormErrorMessage>{form.errors.title}</FormErrorMessage>
                     </FormControl>
@@ -186,6 +202,7 @@ const AddBookRequestForm: React.FC<AddBookRequestFormProps> = ({ onClose }) => {
                         htmlFor="description"
                         fontWeight="medium"
                         fontSize="lg"
+                        mt="12px"
                       >
                         Cerita kamu
                       </FormLabel>
@@ -222,6 +239,7 @@ const AddBookRequestForm: React.FC<AddBookRequestFormProps> = ({ onClose }) => {
                         htmlFor="image"
                         fontWeight="medium"
                         fontSize="lg"
+                        mt="12px"
                       >
                         Gambar Pendukung (opsional){' '}
                       </FormLabel>
@@ -234,7 +252,6 @@ const AddBookRequestForm: React.FC<AddBookRequestFormProps> = ({ onClose }) => {
                         id="image"
                         type="file"
                         pt="4px"
-                        mb="12px"
                         onChange={(event) => {
                           const file = event.target.files?.[0];
                           if (file) {
@@ -247,7 +264,7 @@ const AddBookRequestForm: React.FC<AddBookRequestFormProps> = ({ onClose }) => {
                     </FormControl>
                   )}
                 </Field>
-                <Field name="contact" validate={validateField}>
+                <Field name="contact" validate={validateNomorField}>
                   {({
                     field,
                     form,
@@ -264,19 +281,19 @@ const AddBookRequestForm: React.FC<AddBookRequestFormProps> = ({ onClose }) => {
                         htmlFor="contact"
                         fontWeight="medium"
                         fontSize="lg"
+                        mt="12px"
                       >
                         Kontak Whatsapp
                       </FormLabel>
                       <FormHelperText mt="-6px" mb="4px">
                         {' '}
-                        Masukin kontak whatsapp yang bisa dihubungi, diawali
+                        Masukkan kontak whatsapp yang bisa dihubungi, diawali
                         dengan 62
                       </FormHelperText>
                       <Input
                         {...field}
                         id="contact"
                         placeholder="Contoh: 6282133118220"
-                        mb="12px"
                       />
                       <FormErrorMessage>{form.errors.contact}</FormErrorMessage>
                     </FormControl>
