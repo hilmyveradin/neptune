@@ -12,7 +12,7 @@ const HeaderButton: React.FC<
 
   const renderAuthenticatedMenu = () => (
     <Link href="/app/dashboard" passHref>
-      <Button colorScheme="teal" rounded="xl" variant="outline">
+      <Button colorScheme="purple" rounded="xl" variant="outline">
         Dashboard
       </Button>
     </Link>
