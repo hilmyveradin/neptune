@@ -15,14 +15,13 @@ const CardComponent = ({ title, description, image }: BooksDataTypes) => {
       padding="4"
       alignItems="center"
       outline="1"
+      borderWidth="1px"
     >
       <Box width="150px" height="200px">
-        {' '}
-        {/* Use AspectRatio component */}
         <AspectRatio ratio={3 / 4}>
           <Center>
             <Image
-              src={image === '-9' ? '/404 Error-pana.svg' : image}
+              src={image === '-9' ? '/img-placeholder.png' : image}
               alt={title}
               width={150}
               height={200}
