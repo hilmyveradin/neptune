@@ -18,17 +18,9 @@ import {
   Text,
 } from '@chakra-ui/react';
 
-// import Link from 'next/link';
-// import { useRouter } from 'next/router';
-// import { NextSeo } from 'next-seo';
-// import { useState, useEffect } from 'react';
-
-// import { useAuth } from '../../../customHooks/useAuth';
-// import type { AuthContextType } from '~/customHooks/interfaces';
 import { Logo } from '../../components/daftar/Logo';
 import { OAuthButtonGroup } from '../../components/daftar/OAuthButtonGroup';
 import { PasswordField } from '~/lib/components/masuk/PasswordField';
-// import * as fbq from '~/utils/fpixel';
 
 const Daftar = () => (
   <Container
