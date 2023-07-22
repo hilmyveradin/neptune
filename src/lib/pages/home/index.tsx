@@ -52,11 +52,11 @@ const Home = () => {
               </Text>
               <Text fontSize="3xl" fontWeight="medium">
                 {' '}
-                Berbagi buku untuk semua!{' '}
+                Bagikan buku untuk masa depan!{' '}
               </Text>
               <Text textAlign={isMobile ? 'center' : 'left'}>
-                Kami percaya bahwa setiap orang berhak mendapatkan akses
-                terhadap buku. BagiBuku.id adalah wadah bagi Anda yang ingin
+                Kami percaya bahwa buku adalah jendela utama untuk menggapai
+                masa depan. BagiBuku.id adalah wadah bagi kamu yang ingin
                 meminta, mendonasikan, dan berdiskusi segala hal mengenai buku
                 dengan mudah. Dimanapun. Kapanpun.
               </Text>
