@@ -6,6 +6,7 @@ import AppContainer from '~/lib/layout/AppContainer';
 
 import DashboardBookPage from './dashboard';
 import DonateBookPage from './donasi-buku';
+import ForumBookPage from './forum-buku';
 import RequestBookPage from './permintaan-buku';
 
 const AppLayout = () => {
@@ -15,9 +16,10 @@ const AppLayout = () => {
     <AppContainer withoutNavbar={false} currentSegment={segment ?? ''}>
       {segment === 'dashboard' && <DashboardBookPage />}
       {segment === 'donasi-buku' && <DonateBookPage />}
-      {segment !== 'dashboard' && segment !== 'donasi-buku' && (
-        <RequestBookPage />
-      )}
+      {segment === 'permintaan-buku' && <RequestBookPage />}
+      {segment !== 'dashboard' &&
+        segment !== 'donasi-buku' &&
+        segment !== 'permintaan-buku' && <ForumBookPage />}
     </AppContainer>
   );
 };

@@ -26,7 +26,9 @@ import {
   Image,
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
+import { useRouter } from 'next/navigation';
 import { BsFillHouseFill, BsFillGiftFill, BsBasket3Fill } from 'react-icons/bs';
+import { MdGroups } from 'react-icons/md';
 
 import type { AuthContextType } from '~/customHooks/interfaces';
 import { useAuth } from '~/customHooks/useAuth';
@@ -67,14 +69,14 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
 );
 
 const SideBar = ({ currentSegment }: SideBarProps) => {
-  const { user } = useAuth() as AuthContextType;
-  // const router = useRouter();
+  const { user, signOut } = useAuth() as AuthContextType;
+  const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const isMobile = useBreakpointValue({ base: true, md: false });
 
   const handleSignOut = async () => {
-    // await signOut();
-    // router.push('/');
+    await signOut();
+    router.push('/');
   };
 
   return (
@@ -138,6 +140,12 @@ const SideBar = ({ currentSegment }: SideBarProps) => {
               Icon={BsBasket3Fill}
               label="Permintaan Buku"
               isActive={currentSegment === 'permintaan-buku'}
+            />
+            <SidebarItem
+              href="/app/forum-buku"
+              Icon={MdGroups}
+              label="Forum Buku"
+              isActive={currentSegment === 'forum-buku'}
             />
             <Divider />
             <Spacer />
@@ -204,6 +212,12 @@ const SideBar = ({ currentSegment }: SideBarProps) => {
                     Icon={BsBasket3Fill}
                     label="Daftar Permintaan Buku"
                     isActive={currentSegment === 'permintaan-buku'}
+                  />
+                  <SidebarItem
+                    href="/app/forum-buku"
+                    Icon={MdGroups}
+                    label="Forum Buku"
+                    isActive={currentSegment === 'forum-buku'}
                   />
                   <Divider />
                   <Spacer />
