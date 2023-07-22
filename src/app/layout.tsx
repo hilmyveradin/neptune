@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 import Providers from '~/app/providers';
+import { AuthProvider } from '~/customHooks/useAuth';
 import Layout from '~/lib/layout';
 
 type RootLayoutProps = {
@@ -9,6 +10,7 @@ type RootLayoutProps = {
 
 const APP_NAME = 'nextarter-chakra';
 
+// todo: modify this soon
 export const metadata: Metadata = {
   title: { default: APP_NAME, template: '%s | nextarter-chakra' },
   description: 'Next.js + chakra-ui + TypeScript template',
@@ -46,7 +48,9 @@ const RootLayout = ({ children }: RootLayoutProps) => {
     <html lang="en">
       <body>
         <Providers>
-          <Layout>{children}</Layout>
+          <AuthProvider>
+            <Layout>{children}</Layout>
+          </AuthProvider>
         </Providers>
       </body>
     </html>
