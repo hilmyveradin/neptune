@@ -124,8 +124,13 @@ const Daftar = () => {
             <Stack spacing="6">
               <Stack spacing="5">
                 <FormControl isRequired>
-                  <FormLabel htmlFor="nama" >Nama</FormLabel>
-                  <Input id="nama" type="text" placeholder="Nama Lengkap" onChange={(e) => setDisplayName(e.target.value)} />
+                  <FormLabel htmlFor="nama">Nama</FormLabel>
+                  <Input
+                    id="nama"
+                    type="text"
+                    placeholder="Nama Lengkap"
+                    onChange={(e) => setDisplayName(e.target.value)}
+                  />
                 </FormControl>
                 <FormControl isRequired>
                   <FormLabel htmlFor="email">Email</FormLabel>
