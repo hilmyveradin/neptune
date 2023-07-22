@@ -19,8 +19,12 @@ import {
   HStack,
   useBreakpointValue,
 } from '@chakra-ui/react';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
+import type { AuthContextType } from '~/customHooks/interfaces';
 import type { BooksDataTypes } from '~/customHooks/types';
+import { useAuth } from '~/customHooks/useAuth';
 import useDashboardBooks from '~/customHooks/useDashboardBooks';
 import AddBookDonationForm from '~/lib/components/AddBookDonationForm';
 import AddBookRequestForm from '~/lib/components/addBookRequestForm';
@@ -28,8 +32,11 @@ import AddCardButtonComponent from '~/lib/components/AddCardButtonComponent';
 import CardComponent from '~/lib/components/CardComponent';
 
 const DashboardBookPage = () => {
-  const userID = '1';
-  const { loading, donateBooks, receiveBooks } = useDashboardBooks(userID);
+  const router = useRouter();
+  const { user, isLoading } = useAuth() as AuthContextType;
+  const { loading, donateBooks, receiveBooks } = useDashboardBooks(
+    user?.uid ?? '1'
+  );
   const {
     isOpen: isAddDonationOpen,
     onOpen: onAddDonationOpen,
@@ -50,7 +57,11 @@ const DashboardBookPage = () => {
 
   const isMobile = useBreakpointValue({ base: true, md: false });
 
-  const name = 'foobar foo';
+  useEffect(() => {
+    if (!isLoading && user === null) {
+      router.push('/');
+    }
+  }, [isLoading, user]);
 
   if (loading) {
     return (
@@ -60,7 +71,7 @@ const DashboardBookPage = () => {
     );
   }
 
-  return (
+  return user !== null ? (
     <Flex
       bg="white"
       width="100%"
@@ -70,9 +81,9 @@ const DashboardBookPage = () => {
       mt={isMobile ? '10px' : ''}
     >
       <VStack spacing="20px" width="90%">
-        <Avatar name={name} size="2xl" />
+        <Avatar name={user.displayName ?? ''} size="2xl" />
         <Text fontSize="2xl" fontWeight="bold">
-          {name}
+          {user.displayName}
         </Text>
         <VStack width="100%" align="start">
           <Text fontSize="lg" fontWeight="semibold">
@@ -134,7 +145,10 @@ const DashboardBookPage = () => {
           <ModalHeader />
           <ModalCloseButton />
           <ModalBody>
-            <AddBookDonationForm onClose={onCloseAddDonation} userID={userID} />
+            <AddBookDonationForm
+              onClose={onCloseAddDonation}
+              userID={user.uid}
+            />
           </ModalBody>
         </ModalContent>
       </Modal>
@@ -149,11 +163,13 @@ const DashboardBookPage = () => {
           <ModalHeader />
           <ModalCloseButton />
           <ModalBody>
-            <AddBookRequestForm onClose={onCloseAddRequest} userID={userID} />
+            <AddBookRequestForm onClose={onCloseAddRequest} userID={user.uid} />
           </ModalBody>
         </ModalContent>
       </Modal>
     </Flex>
+  ) : (
+    <h1> user not found! </h1>
   );
 };
 

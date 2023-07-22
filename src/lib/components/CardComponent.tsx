@@ -1,5 +1,4 @@
 import { VStack, Text, Box, AspectRatio, Center } from '@chakra-ui/react';
-// import {  } from '@chakra-ui/react'; // Import AspectRatio
 import Image from 'next/image';
 
 import type { BooksDataTypes } from '~/customHooks/types';

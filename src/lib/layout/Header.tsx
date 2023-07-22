@@ -32,14 +32,13 @@ const Header = () => {
               fontWeight="semibold"
               justifyContent="center"
             >
-              <Image src="/UC logo.svg" maxW="22px" mr="1" alt="" />
+              <Image src="/Logo_GarudaHacks.png" maxW="22px" mr="1" alt="" />
               BagiBuku.id
             </Flex>
           </Box>
         </Link>
         <Spacer />
         <Flex justifyContent="space-between" alignItems="center">
-          {/* <ThemeToggle /> */}
           <HeaderButton />
         </Flex>
       </Flex>

@@ -57,7 +57,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
         variant="ghost"
         w="100%"
         rounded="md"
-        backgroundColor={isActive ? '#E5F0EE' : 'transparent'}
+        backgroundColor={isActive ? 'primary.200' : 'transparent'}
       >
         <Icon />
         <Flex align="flex-start" w="100%" ml="10px">
@@ -119,8 +119,8 @@ const SideBar = ({ currentSegment }: SideBarProps) => {
                 fontWeight="semibold"
                 justifyContent="center"
               >
-                <Image src="/UC logo.svg" maxW="22px" mr="1" alt="" />
-                BagiBuku
+                <Image src="/Logo_GarudaHacks.png" maxW="22px" mr="1" alt="" />
+                BagiBuku.id
               </Flex>
             </Box>
             <Divider />
@@ -176,9 +176,7 @@ const SideBar = ({ currentSegment }: SideBarProps) => {
               </MenuList>
             </Menu>
 
-            <Box w="100%" textAlign="center" pb="5px">
-              <Text fontSize="xs"> BagiBuku </Text>
-            </Box>
+            <Box w="100%" textAlign="center" pb="5px" />
           </VStack>
         </Flex>
       )}
@@ -250,9 +248,7 @@ const SideBar = ({ currentSegment }: SideBarProps) => {
                       </MenuItem>
                     </MenuList>
                   </Menu>
-                  <Box w="100%" textAlign="center" pb="5px">
-                    <Text fontSize="xs"> ©2023 BagiBuku.id </Text>
-                  </Box>
+                  <Box w="100%" textAlign="center" pb="5px" />
                 </VStack>
               </DrawerBody>
             </DrawerContent>

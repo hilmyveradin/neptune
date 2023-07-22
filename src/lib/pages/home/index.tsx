@@ -60,7 +60,13 @@ const Home = () => {
                 meminta, mendonasikan, dan berdiskusi segala hal mengenai buku
                 dengan mudah. Dimanapun. Kapanpun.
               </Text>
-              <Button onClick={cobaSekarangButtonClick} mt="4">
+              <Button
+                onClick={cobaSekarangButtonClick}
+                mt="4"
+                bgColor="primary.500"
+                textColor="white"
+                _hover={{ bg: '#BAA1F6' }}
+              >
                 {' '}
                 Bergabung Sekarang!{' '}
               </Button>

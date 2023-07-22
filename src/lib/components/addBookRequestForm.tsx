@@ -291,7 +291,7 @@ const AddBookRequestForm: React.FC<AddBookRequestFormProps> = ({
                 <Flex justifyContent="flex-end">
                   <Button
                     mt={4}
-                    colorScheme="teal"
+                    colorScheme="purple"
                     isLoading={props.isSubmitting || isButtonDisabled}
                     type="submit"
                     isDisabled={isButtonDisabled}

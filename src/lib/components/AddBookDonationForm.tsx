@@ -284,7 +284,7 @@ const AddBookDonationForm: React.FC<AddBookDonationFormProps> = ({
                 <Flex justifyContent="flex-end">
                   <Button
                     mt={4}
-                    colorScheme="teal"
+                    colorScheme="purple"
                     isLoading={props.isSubmitting || isButtonDisabled}
                     type="submit"
                     isDisabled={isButtonDisabled}

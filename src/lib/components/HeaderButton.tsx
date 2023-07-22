@@ -20,7 +20,7 @@ const HeaderButton: React.FC<
 
   const renderUnauthenticatedButton = () => (
     <Link href="/daftar" passHref>
-      <Button colorScheme="teal" rounded="full" px="7">
+      <Button colorScheme="purple" rounded="full" px="7">
         Daftar
       </Button>
     </Link>

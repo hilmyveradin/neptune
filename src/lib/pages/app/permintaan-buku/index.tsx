@@ -15,17 +15,22 @@ import {
   useBreakpointValue,
   Text,
 } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
+import type { AuthContextType } from '~/customHooks/interfaces';
 import type { BooksDataTypes } from '~/customHooks/types';
+import { useAuth } from '~/customHooks/useAuth';
 import useReceiveBooks from '~/customHooks/useRecieveBooks';
 import CardComponent from '~/lib/components/CardComponent';
 import CardPreviewComponent from '~/lib/components/CardPreviewComponent';
 
 const RequestBookPage = () => {
-  const userID = '1';
-  const { receiveBooks, loading: userReceiveBooksLoading } =
-    useReceiveBooks(userID);
+  const router = useRouter();
+  const { user, isLoading } = useAuth() as AuthContextType;
+  const { receiveBooks, loading: userReceiveBooksLoading } = useReceiveBooks(
+    user?.uid ?? '1'
+  );
   const [selectedBookData, setSelectedBookData] =
     useState<BooksDataTypes | null>(null);
 
@@ -37,7 +42,13 @@ const RequestBookPage = () => {
 
   const isMobile = useBreakpointValue({ base: true, md: false });
 
-  if (userReceiveBooksLoading) {
+  useEffect(() => {
+    if (!isLoading && user === null) {
+      router.push('/');
+    }
+  }, [isLoading, user]);
+
+  if (userReceiveBooksLoading || isLoading) {
     return (
       <Center h="100%">
         <Spinner size="xl" speed="1s" />

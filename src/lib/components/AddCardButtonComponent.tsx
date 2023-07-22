@@ -7,7 +7,7 @@ import {
   Icon,
   Text,
 } from '@chakra-ui/react';
-import { AiOutlinePlus } from 'react-icons/ai'; // This imports the "plus" icon from react-icons
+import { AiOutlinePlus } from 'react-icons/ai';
 
 interface AddCardButtonComponentProps {
   textString: string;
