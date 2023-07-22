@@ -26,10 +26,7 @@ import {
   Image,
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
-// import { useRouter } from 'next/router';
-import { BsBook } from 'react-icons/bs';
-import { MdOutlinePayment } from 'react-icons/md';
-import { RxDashboard } from 'react-icons/rx';
+import { BsFillHouseFill, BsFillGiftFill, BsBasket3Fill } from 'react-icons/bs';
 
 import type { AuthContextType } from '~/customHooks/interfaces';
 import { useAuth } from '~/customHooks/useAuth';
@@ -125,20 +122,20 @@ const SideBar = ({ currentSegment }: SideBarProps) => {
             </Box>
             <Divider />
             <SidebarItem
-              href="/app/dashboard"
-              Icon={MdOutlinePayment}
+              href="/app/forum-buku"
+              Icon={BsFillHouseFill}
               label="Dashboard"
-              isActive={currentSegment === 'dashboard'}
+              isActive={currentSegment === 'forum-buku'}
             />
             <SidebarItem
               href="/app/donasi-buku"
-              Icon={RxDashboard}
+              Icon={BsFillGiftFill}
               label="Donasi Buku"
               isActive={currentSegment === 'donasi-buku'}
             />
             <SidebarItem
               href="/app/permintaan-buku"
-              Icon={BsBook}
+              Icon={BsBasket3Fill}
               label="Permintaan Buku"
               isActive={currentSegment === 'permintaan-buku'}
             />
@@ -192,19 +189,19 @@ const SideBar = ({ currentSegment }: SideBarProps) => {
                 >
                   <SidebarItem
                     href="/app/dashboard"
-                    Icon={MdOutlinePayment}
+                    Icon={BsFillHouseFill}
                     label="Dashboard"
                     isActive={currentSegment === 'dashboard'}
                   />
                   <SidebarItem
                     href="/app/donasi-buku"
-                    Icon={RxDashboard}
+                    Icon={BsFillGiftFill}
                     label="Daftar Donasi Buku"
                     isActive={currentSegment === 'donasi-buku'}
                   />
                   <SidebarItem
                     href="/app/permintaan-buku"
-                    Icon={BsBook}
+                    Icon={BsBasket3Fill}
                     label="Daftar Permintaan Buku"
                     isActive={currentSegment === 'permintaan-buku'}
                   />
