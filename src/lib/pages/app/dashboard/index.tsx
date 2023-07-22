@@ -17,6 +17,7 @@ import {
   Center,
   Spinner,
   HStack,
+  useBreakpointValue,
 } from '@chakra-ui/react';
 
 import type { BooksDataTypes } from '~/customHooks/types';
@@ -47,6 +48,8 @@ const DashboardBookPage = () => {
     onAddRequestOpen();
   };
 
+  const isMobile = useBreakpointValue({ base: true, md: false });
+
   const name = 'foobar foo';
 
   if (loading) {
@@ -64,6 +67,7 @@ const DashboardBookPage = () => {
       height="100%"
       alignItems="center"
       flexDirection="column"
+      mt={isMobile ? '10px' : ''}
     >
       <VStack spacing="20px" width="90%">
         <Avatar name={name} size="2xl" />

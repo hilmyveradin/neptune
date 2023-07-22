@@ -28,6 +28,7 @@ const AppContainer = ({
         padding={4}
         width="full"
         minHeight="100vh"
+        dropShadow="sm"
       >
         {children}
       </Box>

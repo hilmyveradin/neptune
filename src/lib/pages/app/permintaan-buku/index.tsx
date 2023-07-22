@@ -12,6 +12,8 @@ import {
   ModalHeader,
   ModalCloseButton,
   useDisclosure,
+  useBreakpointValue,
+  Text,
 } from '@chakra-ui/react';
 import { useState } from 'react';
 
@@ -33,6 +35,8 @@ const RequestBookPage = () => {
     onClose: onCloseCardPreview,
   } = useDisclosure();
 
+  const isMobile = useBreakpointValue({ base: true, md: false });
+
   if (userReceiveBooksLoading) {
     return (
       <Center h="100%">
@@ -47,43 +51,53 @@ const RequestBookPage = () => {
   };
 
   return (
-    <Box bg="green.500" width="100%" height="100%">
-      <Flex wrap="wrap" justifyContent="flex-start" alignItems="start" p={4}>
-        {receiveBooks.map((book: BooksDataTypes, index: number) => (
-          <Box
-            // eslint-disable-next-line react/no-array-index-key
-            key={`Card${index}`}
-            margin={4}
-            onClick={() => onDataOpened(book)}
-          >
-            <CardComponent
-              title={book.title}
-              description={book.description}
-              image={book.image}
-              contact={book.contact}
-              userID=""
-            />
-          </Box>
-        ))}
-      </Flex>
-      <Modal
-        isOpen={isCardPreviewOpened}
-        onClose={onCloseCardPreview}
-        isCentered
-        size="xl"
+    <>
+      <Text
+        fontSize="2xl"
+        textAlign="center"
+        fontWeight="bold"
+        mt={isMobile ? '10px' : ''}
       >
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader />
-          <ModalCloseButton />
-          <ModalBody>
-            {selectedBookData !== null && (
-              <CardPreviewComponent data={selectedBookData} />
-            )}
-          </ModalBody>
-        </ModalContent>
-      </Modal>
-    </Box>
+        Daftar Permintaan Buku
+      </Text>
+      <Box width="100%" height="100%" mt={isMobile ? '10px' : ''}>
+        <Flex wrap="wrap" justifyContent="flex-start" alignItems="start" p={4}>
+          {receiveBooks.map((book: BooksDataTypes, index: number) => (
+            <Box
+              // eslint-disable-next-line react/no-array-index-key
+              key={`Card${index}`}
+              margin={4}
+              onClick={() => onDataOpened(book)}
+            >
+              <CardComponent
+                title={book.title}
+                description={book.description}
+                image={book.image}
+                contact={book.contact}
+                userID=""
+              />
+            </Box>
+          ))}
+        </Flex>
+        <Modal
+          isOpen={isCardPreviewOpened}
+          onClose={onCloseCardPreview}
+          isCentered
+          size="xl"
+        >
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader />
+            <ModalCloseButton />
+            <ModalBody>
+              {selectedBookData !== null && (
+                <CardPreviewComponent data={selectedBookData} />
+              )}
+            </ModalBody>
+          </ModalContent>
+        </Modal>
+      </Box>
+    </>
   );
 };
 

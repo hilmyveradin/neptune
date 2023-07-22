@@ -13,6 +13,7 @@ import {
   ModalCloseButton,
   useDisclosure,
   Text,
+  useBreakpointValue,
 } from '@chakra-ui/react';
 import { useState } from 'react';
 
@@ -34,6 +35,8 @@ const RequestBookPage = () => {
     onClose: onCloseCardPreview,
   } = useDisclosure();
 
+  const isMobile = useBreakpointValue({ base: true, md: false });
+
   if (userReceiveBooksLoading) {
     return (
       <Center h="100%">
@@ -49,7 +52,12 @@ const RequestBookPage = () => {
 
   return (
     <>
-      <Text fontSize="2xl" textAlign="center" fontWeight="bold">
+      <Text
+        fontSize="2xl"
+        textAlign="center"
+        fontWeight="bold"
+        mt={isMobile ? '10px' : ''}
+      >
         Daftar Donasi Buku
       </Text>
       <Flex width="100%" height="100%">

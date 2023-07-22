@@ -92,6 +92,7 @@ const SideBar = ({ currentSegment }: SideBarProps) => {
           zIndex={1000}
           p={3}
           justifyContent="end"
+          boxShadow="0 2px 4px rgba(0, 0, 0, 0.1)"
         >
           <IconButton
             aria-label="Open menu"
