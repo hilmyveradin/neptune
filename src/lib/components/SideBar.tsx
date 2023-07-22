@@ -137,10 +137,10 @@ const SideBar = ({ currentSegment }: SideBarProps) => {
               isActive={currentSegment === 'donasi-buku'}
             />
             <SidebarItem
-              href="/app/ajukan-buku"
+              href="/app/permintaan-buku"
               Icon={BsBook}
-              label="Ajukan Buku"
-              isActive={currentSegment === 'ajukan-buku'}
+              label="Permintaan Buku"
+              isActive={currentSegment === 'permintaan-buku'}
             />
             <Divider />
             <Spacer />
@@ -199,14 +199,14 @@ const SideBar = ({ currentSegment }: SideBarProps) => {
                   <SidebarItem
                     href="/app/donasi-buku"
                     Icon={RxDashboard}
-                    label="Donasi Buku"
+                    label="Daftar Donasi Buku"
                     isActive={currentSegment === 'donasi-buku'}
                   />
                   <SidebarItem
-                    href="/app/ajukan-buku"
+                    href="/app/permintaan-buku"
                     Icon={BsBook}
-                    label="Ajukan Buku"
-                    isActive={currentSegment === 'ajukan-buku'}
+                    label="Daftar Permintaan Buku"
+                    isActive={currentSegment === 'permintaan-buku'}
                   />
                   <Divider />
                   <Spacer />

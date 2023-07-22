@@ -28,6 +28,7 @@ import { firestore, firebaseStorage } from '../utils/firebaseClient';
 
 interface AddBookRequestFormProps {
   onClose: () => void;
+  userID: string;
 }
 
 interface FormValues {
@@ -37,7 +38,10 @@ interface FormValues {
   contact: string;
 }
 
-const AddBookRequestForm: React.FC<AddBookRequestFormProps> = ({ onClose }) => {
+const AddBookRequestForm: React.FC<AddBookRequestFormProps> = ({
+  onClose,
+  userID,
+}) => {
   const [alertMessage, setAlertMessage] = useState('');
   const { isOpen, onOpen } = useDisclosure();
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
@@ -89,7 +93,7 @@ const AddBookRequestForm: React.FC<AddBookRequestFormProps> = ({ onClose }) => {
     <VStack alignItems="center" p="0 10px 10px 10px">
       <VStack alignItems="center" w="full">
         <Text fontSize="2xl" fontWeight="bold" textAlign="center">
-          Tambah Ajuan Buku
+          Tambah Permintaan Buku
         </Text>
         <Box w="100%">
           <Formik<FormValues>
@@ -118,10 +122,13 @@ const AddBookRequestForm: React.FC<AddBookRequestFormProps> = ({ onClose }) => {
               modifiedValues.image =
                 imageTextData !== '' ? imageTextData : '-9';
               modifiedValues.contact = whatsappLink;
+              modifiedValues.userID = userID;
 
               try {
                 firestore.collection('BookRequests').add(modifiedValues);
-                setAlertMessage('Sukses! Ajuan Kamu berhasil ditambahkan!');
+                setAlertMessage(
+                  'Sukses! Permintaan Kamu berhasil ditambahkan!'
+                );
                 actions.resetForm();
               } catch (error) {
                 console.error('Error adding document: ', error);
@@ -131,28 +138,6 @@ const AddBookRequestForm: React.FC<AddBookRequestFormProps> = ({ onClose }) => {
                 actions.setSubmitting(false);
               }
             }}
-
-            //   try {
-            //     console.log("abc");
-            //     fetch('/api/submitRequest', {
-            //       method: 'POST',
-            //       headers: {
-            //         'Content-Type': 'application/json',
-            //       },
-            //       body: JSON.stringify({ values }),
-            //     });
-            //     console.log("def");
-            //     setAlertMessage('Sukses! Donasi Kamu berhasil ditambahkan!');
-            //     actions.resetForm();
-            //     actions.setSubmitting(false);
-            //   } catch {
-            //     setAlertMessage('Error! Mohon Coba beberapa saat lagi');
-            //     actions.setSubmitting(false);
-            //   } finally {
-            //     onOpen();
-            //     actions.setSubmitting(false);
-            //   }
-            // }}
           >
             {(props: FormikProps<FormValues>) => (
               <Form>
@@ -172,14 +157,18 @@ const AddBookRequestForm: React.FC<AddBookRequestFormProps> = ({ onClose }) => {
                         fontWeight="medium"
                         fontSize="lg"
                       >
-                        Judul Ajuan
+                        Judul Permintaan
                       </FormLabel>
                       <FormHelperText mt="-6px" mb="4px">
                         {' '}
-                        Masukkin judul donasi kamu disini. Bisa berupa judul
+                        Masukkin judul permintaan kamu disini. Bisa berupa judul
                         buku, tema, dan sebagainya.{' '}
                       </FormHelperText>
-                      <Input {...field} id="title" placeholder="Judul Ajuan." />
+                      <Input
+                        {...field}
+                        id="title"
+                        placeholder="Judul Permintaan"
+                      />
 
                       <FormErrorMessage>{form.errors.title}</FormErrorMessage>
                     </FormControl>

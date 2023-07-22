@@ -21,7 +21,9 @@ import CardComponent from '~/lib/components/CardComponent';
 import CardPreviewComponent from '~/lib/components/CardPreviewComponent';
 
 const RequestBookPage = () => {
-  const { receiveBooks, loading: userReceiveBooksLoading } = useReceiveBooks();
+  const userID = '1';
+  const { receiveBooks, loading: userReceiveBooksLoading } =
+    useReceiveBooks(userID);
   const [selectedBookData, setSelectedBookData] =
     useState<BooksDataTypes | null>(null);
 

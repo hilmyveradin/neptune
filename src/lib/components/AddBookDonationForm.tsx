@@ -28,6 +28,7 @@ import { firestore, firebaseStorage } from '../utils/firebaseClient';
 
 interface AddBookDonationFormProps {
   onClose: () => void;
+  userID: string;
 }
 
 interface FormValues {
@@ -39,6 +40,7 @@ interface FormValues {
 
 const AddBookDonationForm: React.FC<AddBookDonationFormProps> = ({
   onClose,
+  userID,
 }) => {
   const [alertMessage, setAlertMessage] = useState('');
   const { isOpen, onOpen } = useDisclosure();
@@ -120,6 +122,7 @@ const AddBookDonationForm: React.FC<AddBookDonationFormProps> = ({
               modifiedValues.image =
                 imageTextData !== '' ? imageTextData : '-9';
               modifiedValues.contact = whatsappLink;
+              modifiedValues.userID = userID;
 
               try {
                 firestore.collection('BookDonations').add(modifiedValues);
@@ -133,28 +136,6 @@ const AddBookDonationForm: React.FC<AddBookDonationFormProps> = ({
                 actions.setSubmitting(false);
               }
             }}
-
-            //   try {
-            //     console.log("abc");
-            //     fetch('/api/submitDonation', {
-            //       method: 'POST',
-            //       headers: {
-            //         'Content-Type': 'application/json',
-            //       },
-            //       body: JSON.stringify({ values }),
-            //     });
-            //     console.log("def");
-            //     setAlertMessage('Sukses! Donasi Kamu berhasil ditambahkan!');
-            //     actions.resetForm();
-            //     actions.setSubmitting(false);
-            //   } catch {
-            //     setAlertMessage('Error! Mohon Coba beberapa saat lagi');
-            //     actions.setSubmitting(false);
-            //   } finally {
-            //     onOpen();
-            //     actions.setSubmitting(false);
-            //   }
-            // }}
           >
             {(props: FormikProps<FormValues>) => (
               <Form>
