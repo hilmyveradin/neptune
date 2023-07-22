@@ -106,8 +106,10 @@ const DashboardBookPage = () => {
             Permintaan Buku Saya
           </Text>
           <HStack flexDirection="row" flexWrap="wrap" spacing="8px">
-            {receiveBooks.map((book: BooksDataTypes) => (
+            {receiveBooks.map((book: BooksDataTypes, index) => (
               <CardComponent
+                // eslint-disable-next-line react/no-array-index-key
+                key={index}
                 title={book.title}
                 description={book.description}
                 image={book.image}

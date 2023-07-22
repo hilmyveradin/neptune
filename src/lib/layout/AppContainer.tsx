@@ -2,7 +2,6 @@ import { Box, Flex, useBreakpointValue } from '@chakra-ui/react';
 import type { ReactNode } from 'react';
 
 import SideBar from '../components/SideBar';
-// import Header from './Header';
 
 type LayoutProps = {
   children?: ReactNode;
@@ -16,7 +15,6 @@ const AppContainer = ({
   currentSegment,
 }: LayoutProps) => {
   const isMobile = useBreakpointValue({ base: true, md: false });
-  // const router = useRouter();
 
   return (
     <Flex minHeight="100vh">

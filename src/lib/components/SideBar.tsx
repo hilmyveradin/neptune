@@ -119,7 +119,7 @@ const SideBar = ({ currentSegment }: SideBarProps) => {
                 fontWeight="semibold"
                 justifyContent="center"
               >
-                <Image src="/UC logo.svg" maxW="22px" mr="1" />
+                <Image src="/UC logo.svg" maxW="22px" mr="1" alt="" />
                 BagiBuku
               </Flex>
             </Box>
