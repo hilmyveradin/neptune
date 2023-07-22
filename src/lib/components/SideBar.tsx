@@ -122,10 +122,10 @@ const SideBar = ({ currentSegment }: SideBarProps) => {
             </Box>
             <Divider />
             <SidebarItem
-              href="/app/forum-buku"
+              href="/app/dashboard"
               Icon={BsFillHouseFill}
               label="Dashboard"
-              isActive={currentSegment === 'forum-buku'}
+              isActive={currentSegment === 'dashboard'}
             />
             <SidebarItem
               href="/app/donasi-buku"
